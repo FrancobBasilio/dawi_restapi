@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: "sistema_solar_restapi"
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/dawiapp?useSSL=false&serverTimezone=UTC
+    username: root
+    password: cancer16
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  output:
+    ansi:
+      enabled: always
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    #defer-datasource-initialization: true   # para inyectar datos al comienzo del arranque
+    # NOTA: ESTO SIEMPRE EJECUTA EL SCRIPT, ASI QUE PODRIA GENERAR ERROR DE CLAVE DUPLICADA, SI LO EJECUTAS 2 VECES
+    # SIEMPRE DEJALO EN CREATE PARA QUE REINICIE LA BD EN CASO NO HAYA DATOS IMPORTANTES
+    # CASO CONTRARIO, COMENTA LA LINEA QUE PERMITE LA INICIALIZACION Y TMB EL SQL DE ABAJO.
+
+
+#  sql:
+#    init:
+#      mode: always
+#      encoding: UTF-8
+
+application:
+  security:
+    jwt:
+      secret-key: 9a8b7c6d5e4f3g2h1i0j9k8l7m6n5o4p3q2r1s0t
+      expiration: 60
+      refresh-expiration: 300
+
